@@ -13,17 +13,15 @@
 
 ## 🏗️ Key Architectural Decisions
 - **Routing**: Migrated from simple state-based view switching to a robust `react-router-dom` architecture to handle the 4-page flow seamlessly.
-- **Styling constraints**: Strictly **NO Tailwind CSS**. All components use vanilla CSS scoped to their specific component files (e.g. `SuccessPage.css`). Layout is now **fully responsive** — the old 430px phone-simulator wrapper has been removed. `#root` fills the viewport with `max-width: 960px` on desktop.
-- **Responsive Design Tokens**: Global CSS custom properties in `index.css` use `clamp()` for fluid spacing: `--page-padding`, `--section-gap`, `--card-radius`, `--content-max-width`. All component CSS files use these tokens.
-- **Responsive Breakpoints**: Two main breakpoints — `600px` (tablet) and `1024px` (desktop). On tablet+, hospital cards and ambulance cards switch to CSS Grid (`auto-fill, minmax(280px, 1fr)`).
-- **Bottom Navigation**: Uses `position: fixed` centered on the viewport with `max-width: var(--content-max-width)`. Phone-frame border-radius removed.
-- **Icons & Assets**: All assets, logos, and UI vectors are downloaded from Figma via custom scripts (e.g. `scripts/download_success_assets.mjs`) into `frontend/public/assets`. SVG icons are mostly utilized as inline paths inside React components or direct `.svg` image tags.
-- **Data Placeholders**: Pricing and patient details (like ₹3300 on the success page, Krishnendu Roy as patient) are currently **hardcoded** to strictly match the Figma MVP designs. The next agent will need to pass these as dynamic states.
-- **Status Bar / Dynamic Island**: The fake iOS status bar (`dynamic-island`, signal/wifi/battery icons) is hidden via CSS (`display: none`). It was only a Figma design artifact.
+- **Bottom Navigation Bar Visibility**: Hidden completely on desktop screens (>1024px) via `BottomNavigation.css` media query (`display: none !important`). Displays strictly on mobile and tablet devices (<1024px).
+- **Layout & Width**: `#root` container width uses `max-width: 1280px` centered with `margin: 0 auto`. Side paddings and artificial width constraints removed.
+- **Hospital List Layout**: Configured as vertical stacked cards (`flex-direction: column`) stretching 100% across the container width gracefully.
+- **Booking Toggle & Search Bar**: Spans 100% container width aligned with main content grid.
+- **Star Rating Icons**: Scaled to standard 14px-16px inline badge size in `HospitalCard.css`.
+- **Branding & Typography**: SF Pro font family (`'SF Pro Display', 'SF Pro Text', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`). Removed logo emblem next to "RapidCare" title for a minimal, clean, typography-focused header.
 
 ## 🐛 Known Quirks & Gotchas
-- **Bottom Navigation**: The `BottomNavigation` component uses `position: fixed` at the bottom. All main page components must have `padding-bottom: ~100-120px` to avoid content being hidden behind it.
-- **Fixed Bottom Buttons**: The "Continue to payment" and "Pay Securely" buttons use `position: fixed` with `left: 50%; transform: translateX(-50%); max-width: var(--content-max-width)` to stay centered and constrained to the content area.
+- **Bottom Navigation**: Hidden on desktop screens (>1024px). On mobile/tablet (<1024px), page container padding-bottom ensures no overlap with fixed nav.
 - **Scrollbars**: Hidden globally using `::-webkit-scrollbar { display: none; }` and `-ms-overflow-style: none` on main container classes.
 
 ---

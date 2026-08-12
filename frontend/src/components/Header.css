@@ -15,6 +15,7 @@
 }
 
 .greeting {
+  font-family: var(--brand-font);
   font-size: clamp(18px, 2.5vw, 24px);
   font-weight: 700;
   color: var(--text-primary);
@@ -51,52 +52,18 @@
   height: 14px;
 }
 
-/* Clear & High-Contrast Brand Logo */
+/* Minimal, Typography-Focused Rapid Care Header */
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: #ffffff;
-  padding: 8px 18px;
-  border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(49, 29, 135, 0.08);
-  border: 1.5px solid rgba(49, 29, 135, 0.12);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
-}
-
-.brand:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(49, 29, 135, 0.14);
-}
-
-.brand-logo-badge {
-  width: 34px;
-  height: 34px;
-  background: linear-gradient(135deg, #311d87 0%, #4f33c7 100%);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  box-shadow: 0 3px 8px rgba(49, 29, 135, 0.3);
-}
-
-.brand-icon {
-  width: 20px;
-  height: 20px;
 }
 
 .brand-title {
-  font-family: var(--brand-font, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(22px, 2.8vw, 30px);
+  font-family: var(--brand-font);
+  font-size: clamp(24px, 3vw, 32px);
   font-weight: 800;
   color: var(--primary-purple);
   margin: 0;
   line-height: 1;
   letter-spacing: -0.03em;
-}
-
-.brand-highlight {
-  color: #ff3b30;
-  margin-left: 1px;
 }
