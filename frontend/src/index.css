@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --primary-purple: #311d87;
+  --bg-color: #efe9fd;
+  --text-primary: #000000;
+  --text-secondary: #70718b;
+  --text-tertiary: #87889e;
+  --card-bg: #ffffff;
+  --border-color: #3c298e;
+  
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: #000; /* Dark background for desktop wrapper */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+#root {
+  width: 100%;
+  max-width: 430px; /* iPhone 14 Plus width approx */
+  height: 100vh;
+  max-height: 932px;
+  background-color: var(--bg-color);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  border-radius: 40px; /* Rounded corners for mobile feel on desktop */
+  border: 8px solid #000;
+}
+
+/* Hide scrollbar for a cleaner mobile look */
+.app-container::-webkit-scrollbar {
+  display: none;
+}
+.app-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.app-container {
+  padding: 20px;
+  padding-bottom: 110px; /* Space for bottom nav */
+  height: 100%;
+  overflow-y: auto;
+}

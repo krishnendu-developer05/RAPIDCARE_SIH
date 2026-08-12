@@ -1,0 +1,53 @@
+.hospital-list-section {
+  margin-bottom: 20px;
+}
+
+.hospital-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hospital-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.8;
+}
+
+.header-left h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-purple);
+  opacity: 0.94;
+  letter-spacing: 0.5px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.view-all {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+}
+
+.arrow-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.hospital-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

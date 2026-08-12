@@ -1,0 +1,122 @@
+.bottom-nav-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 95px;
+  z-index: 10;
+}
+
+.bottom-nav-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  background-color: #ccbbf7;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  z-index: 1;
+}
+
+.bottom-nav-curve {
+  position: absolute;
+  bottom: 22px; /* Positioned slightly above to blend with the bg */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 143px;
+  height: 68px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.curve-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.home-fab {
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-purple);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  box-shadow: 0 4px 10px rgba(49, 29, 135, 0.4);
+}
+
+.home-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.home-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000;
+  margin-top: 8px;
+}
+
+.nav-items {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 3;
+  padding: 0 10px;
+}
+
+.nav-item {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.space-for-fab {
+  width: 80px; /* Leave space for the center FAB */
+}
+
+.nav-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.profile-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.robot-icon {
+  position: relative;
+  width: 26px;
+  height: 26px;
+}
+
+.icon-part-1 {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.icon-part-2 {
+  position: absolute;
+  top: 40%;
+  left: 25%;
+  width: 50%;
+  height: 30%;
+}

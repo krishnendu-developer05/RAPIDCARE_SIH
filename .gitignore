@@ -1,0 +1,14 @@
+node_modules/
+dist/
+
+# Ignore all .env files by default
+.env*
+.flaskenv*
+
+# ...except the ones dotenvx encrypts (which are safe to commit)
+!.env
+!.env.project
+!.env.vault
+
+# NEVER commit the decryption keys!
+.env.keys

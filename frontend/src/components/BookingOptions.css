@@ -1,0 +1,41 @@
+.booking-options-container {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.booking-toggle-bg {
+  background-color: rgba(238, 232, 252, 0.5);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  display: flex;
+  width: 100%;
+  height: 45px;
+  padding: 4px;
+  align-items: center;
+}
+
+.booking-option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-purple);
+  border-radius: 8px;
+  cursor: pointer;
+  gap: 6px;
+}
+
+.booking-option.active {
+  background-color: var(--primary-purple);
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.option-icon {
+  width: 15px;
+  height: 15px;
+}

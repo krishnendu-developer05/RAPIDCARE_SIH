@@ -1,0 +1,288 @@
+.success-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+  padding-bottom: 120px; /* Space for bottom nav */
+  overflow-y: auto;
+}
+
+.success-page::-webkit-scrollbar {
+  display: none;
+}
+.success-page {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.success-title {
+  font-size: 24px;
+  font-weight: 590;
+  color: #000;
+  margin: 10px 0 20px 0;
+}
+
+.mb-3 {
+  margin-bottom: 12px !important;
+}
+
+.fw-700 {
+  font-weight: 700 !important;
+}
+
+.fw-500 {
+  font-weight: 510 !important;
+}
+
+.fw-400 {
+  font-weight: 400 !important;
+}
+
+.text-black {
+  color: #000 !important;
+}
+
+/* Map Container */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 157px;
+  border-radius: 15px;
+  border: 2px solid #311d87;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.map-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.map-overlay {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 30px;
+  background: rgba(239, 233, 253, 0.4);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  box-shadow: -2px -2px 4px 0px rgba(0,0,0,0.1), 2px 2px 4px 0px rgba(166,147,147,0.1);
+}
+
+.overlay-label {
+  font-size: 8px;
+  font-weight: 510;
+  color: #87889e;
+  display: block;
+}
+
+.overlay-val {
+  font-size: 15px;
+  font-weight: 700;
+  color: #3c298e;
+  line-height: 1.2;
+}
+
+.overlay-val.right {
+  font-size: 10px;
+}
+
+.overlay-right {
+  text-align: right;
+}
+
+/* Info Cards */
+.info-card {
+  background-color: #ded3fd;
+  border-radius: 15px;
+  border: 2px solid #311d87;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  box-shadow: 4px 4px 8px 0px rgba(0,0,0,0.25);
+}
+
+/* Driver Details */
+.driver-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.driver-photo {
+  width: 57px;
+  height: 57px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.driver-text {
+  font-size: 16px;
+  color: #000;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.mt-1 {
+  margin-top: 4px;
+}
+
+.driver-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.driver-btn {
+  flex: 1;
+  height: 31px;
+  border-radius: 15px;
+  font-size: 14px;
+  font-weight: 510;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.call-btn {
+  background-color: #311d87;
+  color: #fff;
+  border: none;
+}
+
+.msg-btn {
+  background-color: #efe9fd;
+  color: #311d87;
+  border: 1px solid #311d87;
+}
+
+/* Emergency Info */
+.em-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 2px 0;
+}
+
+.pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.pill {
+  background-color: #efe9fd;
+  border: 1px solid #311d87;
+  border-radius: 15px;
+  padding: 4px 12px;
+  font-size: 10px;
+  font-weight: 510;
+  color: #311d87;
+}
+
+.timeline-container {
+  position: relative;
+  margin-top: 15px;
+  padding-left: 15px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #311d87;
+}
+
+.timeline-dot.top {
+  top: 4px;
+}
+
+.timeline-dot.bottom {
+  top: 29px;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 4px;
+  top: 10px;
+  width: 1px;
+  height: 20px;
+  background-color: #311d87;
+}
+
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+  line-height: 1;
+}
+
+.timeline-sub {
+  font-size: 10px;
+  font-weight: 510;
+  color: #70718b;
+  margin: 2px 0 0 0;
+  line-height: 1;
+}
+
+.mt-4 {
+  margin-top: 15px;
+}
+
+/* Payment Breakdown */
+.payment-breakdown {
+  position: relative;
+  padding-bottom: 25px; /* make room for paid badge */
+}
+
+.pb-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pb-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+}
+
+.pb-val {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+}
+
+.paid-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background-color: #ceecd4;
+  color: #457a52;
+  font-size: 13px;
+  font-weight: 510;
+  padding: 2px 10px;
+  border-radius: 7px;
+}

@@ -1,0 +1,13 @@
+{
+  "name": "rapidcare-root",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "lint": "npm run lint --prefix frontend",
+    "deploy": "npx vercel --prod"
+  },
+  "devDependencies": {
+    "@dotenvx/dotenvx": "^2.21.0"
+  }
+}

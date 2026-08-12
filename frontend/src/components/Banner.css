@@ -1,0 +1,66 @@
+.banner-container {
+  position: relative;
+  width: 100%;
+  height: 172px;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.banner-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.banner-blur {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 212px;
+  height: 148px;
+  background: rgba(217, 217, 217, 0.2);
+  filter: blur(20px);
+  z-index: 2;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 3;
+  padding: 15px 20px;
+  width: 240px;
+}
+
+.banner-title {
+  color: #fff;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.banner-text {
+  color: #fff;
+  font-size: 8px;
+  line-height: 1.3;
+  opacity: 0.9;
+}
+
+.banner-pagination {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+}
+
+.banner-pagination img {
+  height: 4px;
+}
