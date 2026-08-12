@@ -1,8 +1,8 @@
 .amb-page {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: 20px;
+  min-height: 100vh;
+  padding: var(--page-padding, 20px);
   padding-bottom: 110px; /* Space for bottom nav */
   overflow-y: auto;
 }
@@ -20,7 +20,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: clamp(20px, 5vw, 35px);
 }
 
 .back-btn {
@@ -47,7 +47,7 @@
 }
 
 .amb-brand {
-  font-size: 24px;
+  font-size: clamp(20px, 5vw, 28px);
   font-weight: 600;
   color: #000;
   margin: 0;
@@ -55,11 +55,11 @@
 }
 
 .amb-header-text {
-  margin-bottom: 20px;
+  margin-bottom: var(--section-gap, 20px);
 }
 
 .booking-at {
-  font-size: 11px;
+  font-size: clamp(10px, 2.5vw, 12px);
   font-weight: 700;
   color: #000;
   letter-spacing: 0.5px;
@@ -67,7 +67,7 @@
 }
 
 .choose-type {
-  font-size: 24px;
+  font-size: clamp(20px, 5vw, 28px);
   font-weight: 860;
   color: #000;
   margin: 0;
@@ -76,15 +76,17 @@
 .amb-list {
   display: flex;
   flex-direction: column;
-  padding-bottom: 80px; /* Extra space for the fixed button */
+  padding-bottom: 80px;
 }
 
 .amb-fixed-bottom {
-  position: absolute;
-  bottom: 110px; /* Just above the bottom nav */
-  left: 0;
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
-  padding: 0 20px;
+  max-width: var(--content-max-width, 960px);
+  padding: 0 var(--page-padding, 20px);
   z-index: 5;
 }
 
@@ -95,11 +97,25 @@
   color: #fff;
   border: none;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: clamp(14px, 3.5vw, 17px);
   font-weight: 700;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(49, 29, 135, 0.3);
+  transition: transform 0.15s ease;
+}
+
+.continue-btn:active {
+  transform: scale(0.98);
+}
+
+/* Tablet+: 2-column ambulance card grid */
+@media (min-width: 600px) {
+  .amb-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
 }

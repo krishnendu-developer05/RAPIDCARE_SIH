@@ -1,15 +1,15 @@
 .hospital-card {
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-radius: 10px;
+  border-radius: var(--card-radius, 10px);
   padding: 10px;
   display: flex;
-  gap: 12px;
+  gap: clamp(8px, 2.5vw, 14px);
 }
 
 .card-image-container {
-  width: 102px;
-  height: 96px;
+  width: clamp(80px, 22vw, 120px);
+  aspect-ratio: 1.06;
   border-radius: 8px;
   overflow: hidden;
   flex-shrink: 0;
@@ -25,6 +25,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0; /* Prevent text overflow */
 }
 
 .card-header {
@@ -35,10 +36,13 @@
 }
 
 .hospital-name {
-  font-size: 13px;
+  font-size: clamp(12px, 3vw, 14px);
   font-weight: 600;
   color: #000;
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .call-btn {
@@ -66,8 +70,9 @@
 
 .hospital-meta {
   display: flex;
-  gap: 12px;
+  gap: clamp(6px, 2vw, 12px);
   margin-bottom: 6px;
+  flex-wrap: wrap;
 }
 
 .meta-item {
@@ -82,16 +87,17 @@
 }
 
 .meta-text {
-  font-size: 11px;
+  font-size: clamp(10px, 2.5vw, 12px);
   font-weight: 500;
   color: var(--text-tertiary);
 }
 
 .beds-info {
-  font-size: 12px;
+  font-size: clamp(11px, 2.8vw, 13px);
   margin-bottom: 6px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .beds-label {
@@ -123,12 +129,12 @@
 }
 
 .star-icon {
-  width: 14px;
-  height: 14px;
+  width: clamp(12px, 3vw, 14px);
+  height: clamp(12px, 3vw, 14px);
 }
 
 .rating-value {
-  font-size: 12px;
+  font-size: clamp(11px, 2.8vw, 13px);
   font-weight: 600;
   color: #000;
 }
@@ -137,15 +143,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: auto;
 }
 
 .tags {
-  font-size: 11px;
+  font-size: clamp(10px, 2.5vw, 12px);
   font-weight: 300;
   color: #000;
   display: flex;
   align-items: center;
   gap: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .tag-dot {
@@ -154,6 +164,7 @@
   background-color: #000;
   border-radius: 50%;
   display: inline-block;
+  flex-shrink: 0;
 }
 
 .book-btn {
@@ -161,9 +172,15 @@
   color: #fff;
   border: none;
   border-radius: 5px;
-  padding: 6px 12px;
-  font-size: 12px;
+  padding: 6px clamp(10px, 2.5vw, 14px);
+  font-size: clamp(11px, 2.8vw, 13px);
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.book-btn:active {
+  transform: scale(0.96);
 }

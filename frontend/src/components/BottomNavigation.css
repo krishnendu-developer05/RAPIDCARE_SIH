@@ -1,9 +1,11 @@
 .bottom-nav-container {
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
-  height: 95px;
+  max-width: var(--content-max-width, 960px);
+  height: 80px;
   z-index: 10;
 }
 
@@ -12,16 +14,14 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 75px;
+  height: 70px;
   background-color: #ccbbf7;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
   z-index: 1;
 }
 
 .bottom-nav-curve {
   position: absolute;
-  bottom: 22px; /* Positioned slightly above to blend with the bg */
+  bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
   width: 143px;
@@ -70,12 +70,12 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 75px;
+  height: 70px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   z-index: 3;
-  padding: 0 10px;
+  padding: 0 clamp(8px, 3vw, 20px);
 }
 
 .nav-item {
@@ -87,7 +87,7 @@
 }
 
 .space-for-fab {
-  width: 80px; /* Leave space for the center FAB */
+  width: 80px;
 }
 
 .nav-icon {
@@ -119,4 +119,24 @@
   left: 25%;
   width: 50%;
   height: 30%;
+}
+
+/* Small mobile: slightly smaller nav */
+@media (max-width: 360px) {
+  .bottom-nav-container {
+    height: 72px;
+  }
+
+  .bottom-nav-bg {
+    height: 62px;
+  }
+
+  .nav-items {
+    height: 62px;
+  }
+
+  .home-fab {
+    width: 44px;
+    height: 44px;
+  }
 }

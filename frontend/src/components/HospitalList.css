@@ -22,7 +22,7 @@
 }
 
 .header-left h3 {
-  font-size: 13px;
+  font-size: clamp(12px, 3vw, 14px);
   font-weight: 700;
   color: var(--primary-purple);
   opacity: 0.94;
@@ -36,7 +36,7 @@
 }
 
 .view-all {
-  font-size: 13px;
+  font-size: clamp(12px, 3vw, 14px);
   font-weight: 700;
   color: var(--text-tertiary);
 }
@@ -50,4 +50,13 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+
+/* Tablet+: 2-column grid */
+@media (min-width: 600px) {
+  .hospital-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
 }

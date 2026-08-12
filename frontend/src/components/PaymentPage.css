@@ -1,9 +1,9 @@
 .payment-page {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: 20px;
-  padding-bottom: 120px; /* Space for bottom nav and fixed button */
+  min-height: 100vh;
+  padding: var(--page-padding, 20px);
+  padding-bottom: 120px;
   overflow-y: auto;
 }
 
@@ -16,22 +16,23 @@
 }
 
 .payment-title {
-  font-size: 24px;
+  font-size: clamp(20px, 5vw, 28px);
   font-weight: 590;
   color: #311d87;
-  margin: 10px 0 20px 0;
+  margin: 10px 0 var(--section-gap, 20px) 0;
 }
 
 .payment-card {
   background-color: #ffffff;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: -4px -4px 8px 0px rgba(142,142,142,0.25), 4px 4px 8px 0px rgba(119,118,118,0.25);
+  border-radius: var(--card-radius, 10px);
+  padding: clamp(14px, 4vw, 24px);
+  margin-bottom: var(--section-gap, 20px);
+  box-shadow: -4px -4px 8px 0px rgba(142, 142, 142, 0.25),
+    4px 4px 8px 0px rgba(119, 118, 118, 0.25);
 }
 
 .section-subtitle {
-  font-size: 16px;
+  font-size: clamp(14px, 3.5vw, 17px);
   font-weight: 700;
   color: #000;
   margin: 0 0 15px 0;
@@ -42,7 +43,7 @@
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
-  margin-bottom: 25px;
+  margin-bottom: var(--section-gap, 25px);
   border: 1px solid rgba(112, 113, 139, 0.31);
 }
 
@@ -50,11 +51,12 @@
   flex: 1;
   text-align: center;
   padding: 8px 0;
-  font-size: 12px;
+  font-size: clamp(11px, 2.8vw, 13px);
   font-weight: 590;
   color: #311d87;
   cursor: pointer;
   border-right: 1px solid rgba(112, 113, 139, 0.31);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 .tab:last-child {
   border-right: none;
@@ -66,7 +68,7 @@
 }
 
 .subsection-subtitle {
-  font-size: 13px;
+  font-size: clamp(12px, 3vw, 14px);
   font-weight: 700;
   color: #000;
   margin: 0 0 10px 0;
@@ -74,40 +76,43 @@
 
 .upi-apps-grid {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: clamp(8px, 2vw, 14px);
+  margin-bottom: var(--section-gap, 25px);
 }
 
 .upi-app {
-  width: 62px;
-  height: 64px;
+  width: clamp(54px, 15vw, 68px);
+  height: clamp(56px, 16vw, 70px);
   background-color: #fffdfd;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: -4px -4px 8px 0px rgba(183,183,183,0.25), 4px 4px 8px 0px rgba(173,173,173,0.25);
+  box-shadow: -4px -4px 8px 0px rgba(183, 183, 183, 0.25),
+    4px 4px 8px 0px rgba(173, 173, 173, 0.25);
   cursor: pointer;
   border: 1px solid transparent;
+  transition: border-color 0.15s ease;
 }
 .upi-app.selected {
   border-color: #191970;
 }
 
 .upi-icon {
-  width: 30px;
-  height: 30px;
+  width: clamp(24px, 6vw, 32px);
+  height: clamp(24px, 6vw, 32px);
   object-fit: contain;
   margin-bottom: 2px;
 }
 .amazon-icon {
-  width: 40px;
-  height: 25px;
+  width: clamp(32px, 8vw, 42px);
+  height: clamp(18px, 5vw, 26px);
 }
 
 .upi-label {
-  font-size: 9px;
+  font-size: clamp(8px, 2vw, 10px);
   font-weight: 590;
   color: #474747;
 }
@@ -116,8 +121,9 @@
   display: flex;
   background-color: #fffbfb;
   border-radius: 10px;
-  box-shadow: inset -2px -2px 4px 0px rgba(141,141,141,0.25), inset 2px 2px 4px 0px rgba(114,114,114,0.25);
-  height: 43px;
+  box-shadow: inset -2px -2px 4px 0px rgba(141, 141, 141, 0.25),
+    inset 2px 2px 4px 0px rgba(114, 114, 114, 0.25);
+  height: clamp(40px, 9vw, 48px);
   padding: 5px;
   align-items: center;
 }
@@ -128,7 +134,7 @@
   border: none;
   outline: none;
   padding: 0 10px;
-  font-size: 13px;
+  font-size: clamp(12px, 3vw, 14px);
   font-weight: 700;
   color: #87889e;
 }
@@ -139,10 +145,15 @@
   border: none;
   border-radius: 8px;
   height: 33px;
-  padding: 0 15px;
-  font-size: 13px;
+  padding: 0 clamp(10px, 3vw, 18px);
+  font-size: clamp(12px, 3vw, 14px);
   font-weight: 700;
   cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.verify-btn:active {
+  transform: scale(0.96);
 }
 
 /* Cards Form */
@@ -160,15 +171,17 @@
 
 .form-row {
   display: flex;
-  gap: 12px;
+  gap: clamp(8px, 2.5vw, 14px);
+  flex-wrap: wrap;
 }
 
 .half {
   flex: 1;
+  min-width: 120px;
 }
 
 .form-label {
-  font-size: 13px;
+  font-size: clamp(12px, 3vw, 14px);
   font-weight: 700;
   color: #000;
 }
@@ -177,8 +190,9 @@
   display: flex;
   background-color: #fffbfb;
   border-radius: 10px;
-  box-shadow: inset -2px -2px 4px 0px rgba(141,141,141,0.25), inset 2px 2px 4px 0px rgba(114,114,114,0.25);
-  height: 43px;
+  box-shadow: inset -2px -2px 4px 0px rgba(141, 141, 141, 0.25),
+    inset 2px 2px 4px 0px rgba(114, 114, 114, 0.25);
+  height: clamp(40px, 9vw, 48px);
   padding: 5px;
   align-items: center;
 }
@@ -197,7 +211,7 @@
   background: transparent;
   border: none;
   outline: none;
-  font-size: 13px;
+  font-size: clamp(12px, 3vw, 14px);
   font-weight: 700;
   color: #87889e;
   width: 100%;
@@ -210,7 +224,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: var(--section-gap, 20px);
   padding: 0 5px;
 }
 
@@ -222,6 +236,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .checkbox-square.checked {
@@ -229,7 +244,7 @@
 }
 
 .checkbox-label {
-  font-size: 14px;
+  font-size: clamp(13px, 3.2vw, 15px);
   font-weight: 700;
   color: #000;
 }
@@ -242,8 +257,9 @@
 
 .popular-banks-container {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: clamp(10px, 3vw, 20px);
+  margin-bottom: var(--section-gap, 25px);
 }
 
 .bank-item {
@@ -254,13 +270,13 @@
 }
 
 .bank-logo-circle {
-  width: 51px;
-  height: 51px;
+  width: clamp(42px, 11vw, 55px);
+  height: clamp(42px, 11vw, 55px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   border: 1px solid transparent;
 }
@@ -270,13 +286,13 @@
 }
 
 .bank-logo-img {
-  width: 36px;
-  height: 36px;
+  width: clamp(28px, 7vw, 38px);
+  height: clamp(28px, 7vw, 38px);
   object-fit: contain;
 }
 
 .bank-label {
-  font-size: 9px;
+  font-size: clamp(8px, 2vw, 10px);
   font-weight: 590;
   color: #474747;
 }
@@ -292,18 +308,18 @@
   margin-bottom: 8px;
 }
 .summary-label {
-  font-size: 13px;
+  font-size: clamp(12px, 3vw, 14px);
   font-weight: 510;
   color: #311d87;
 }
 .summary-val {
-  font-size: 13px;
+  font-size: clamp(12px, 3vw, 14px);
   font-weight: 510;
   color: #311d87;
 }
 
 .summary-divider {
-  height: 10px; /* Spacer */
+  height: 10px;
 }
 
 .total-row {
@@ -311,22 +327,24 @@
   align-items: center;
 }
 .total-label {
-  font-size: 16px;
+  font-size: clamp(14px, 3.5vw, 17px);
   font-weight: 700;
   color: #000;
 }
 .total-val {
-  font-size: 16px;
+  font-size: clamp(14px, 3.5vw, 17px);
   font-weight: 700;
   color: #000;
 }
 
 .payment-fixed-bottom {
-  position: absolute;
-  bottom: 110px;
-  left: 0;
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
-  padding: 0 20px;
+  max-width: var(--content-max-width, 960px);
+  padding: 0 var(--page-padding, 20px);
   z-index: 5;
 }
 
@@ -337,17 +355,34 @@
   color: #fff;
   border: none;
   border-radius: 40px;
-  font-size: 16px;
+  font-size: clamp(14px, 3.5vw, 17px);
   font-weight: 590;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  box-shadow: -4px -4px 8px 0px rgba(0,0,0,0.24), 4px 4px 8px 0px rgba(0,0,0,0.68);
+  box-shadow: -4px -4px 8px 0px rgba(0, 0, 0, 0.24),
+    4px 4px 8px 0px rgba(0, 0, 0, 0.68);
+  transition: transform 0.15s ease;
+}
+
+.pay-securely-btn:active {
+  transform: scale(0.98);
 }
 
 .lock-icon {
   width: 18px;
   height: 18px;
+}
+
+/* Tablet+: two-column layout for payment cards */
+@media (min-width: 600px) {
+  .upi-apps-grid {
+    justify-content: flex-start;
+  }
+
+  .popular-banks-container {
+    justify-content: flex-start;
+  }
 }

@@ -1,9 +1,9 @@
 .success-page {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: 20px;
-  padding-bottom: 120px; /* Space for bottom nav */
+  min-height: 100vh;
+  padding: var(--page-padding, 20px);
+  padding-bottom: 120px;
   overflow-y: auto;
 }
 
@@ -16,10 +16,10 @@
 }
 
 .success-title {
-  font-size: 24px;
+  font-size: clamp(20px, 5vw, 28px);
   font-weight: 590;
   color: #000;
-  margin: 10px 0 20px 0;
+  margin: 10px 0 var(--section-gap, 20px) 0;
 }
 
 .mb-3 {
@@ -46,11 +46,13 @@
 .map-container {
   position: relative;
   width: 100%;
-  height: 157px;
-  border-radius: 15px;
+  aspect-ratio: 16 / 7;
+  min-height: 130px;
+  max-height: 240px;
+  border-radius: var(--card-radius, 15px);
   border: 2px solid #311d87;
   overflow: hidden;
-  margin-bottom: 15px;
+  margin-bottom: var(--section-gap, 15px);
 }
 
 .map-img {
@@ -72,26 +74,27 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
-  box-shadow: -2px -2px 4px 0px rgba(0,0,0,0.1), 2px 2px 4px 0px rgba(166,147,147,0.1);
+  padding: 0 clamp(8px, 2vw, 14px);
+  box-shadow: -2px -2px 4px 0px rgba(0, 0, 0, 0.1),
+    2px 2px 4px 0px rgba(166, 147, 147, 0.1);
 }
 
 .overlay-label {
-  font-size: 8px;
+  font-size: clamp(7px, 1.8vw, 9px);
   font-weight: 510;
   color: #87889e;
   display: block;
 }
 
 .overlay-val {
-  font-size: 15px;
+  font-size: clamp(12px, 3vw, 16px);
   font-weight: 700;
   color: #3c298e;
   line-height: 1.2;
 }
 
 .overlay-val.right {
-  font-size: 10px;
+  font-size: clamp(8px, 2vw, 11px);
 }
 
 .overlay-right {
@@ -101,30 +104,31 @@
 /* Info Cards */
 .info-card {
   background-color: #ded3fd;
-  border-radius: 15px;
+  border-radius: var(--card-radius, 15px);
   border: 2px solid #311d87;
-  padding: 12px 15px;
-  margin-bottom: 15px;
-  box-shadow: 4px 4px 8px 0px rgba(0,0,0,0.25);
+  padding: clamp(10px, 3vw, 16px) clamp(12px, 3.5vw, 18px);
+  margin-bottom: var(--section-gap, 15px);
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.25);
 }
 
 /* Driver Details */
 .driver-info {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: clamp(8px, 2.5vw, 14px);
   margin-bottom: 15px;
 }
 
 .driver-photo {
-  width: 57px;
-  height: 57px;
+  width: clamp(44px, 12vw, 62px);
+  height: clamp(44px, 12vw, 62px);
   border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .driver-text {
-  font-size: 16px;
+  font-size: clamp(14px, 3.5vw, 17px);
   color: #000;
   font-weight: 700;
   margin: 0;
@@ -137,19 +141,24 @@
 
 .driver-actions {
   display: flex;
-  gap: 12px;
+  gap: clamp(8px, 2.5vw, 14px);
 }
 
 .driver-btn {
   flex: 1;
-  height: 31px;
+  height: clamp(28px, 7vw, 34px);
   border-radius: 15px;
-  font-size: 14px;
+  font-size: clamp(12px, 3vw, 15px);
   font-weight: 510;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.driver-btn:active {
+  transform: scale(0.96);
 }
 
 .call-btn {
@@ -166,7 +175,7 @@
 
 /* Emergency Info */
 .em-text {
-  font-size: 14px;
+  font-size: clamp(12px, 3vw, 15px);
   font-weight: 700;
   color: #000;
   margin: 0 0 2px 0;
@@ -175,7 +184,7 @@
 .pills-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: clamp(6px, 1.5vw, 10px);
   margin-top: 10px;
   margin-bottom: 15px;
 }
@@ -184,8 +193,8 @@
   background-color: #efe9fd;
   border: 1px solid #311d87;
   border-radius: 15px;
-  padding: 4px 12px;
-  font-size: 10px;
+  padding: 4px clamp(8px, 2vw, 14px);
+  font-size: clamp(9px, 2.2vw, 11px);
   font-weight: 510;
   color: #311d87;
 }
@@ -233,7 +242,7 @@
 }
 
 .timeline-title {
-  font-size: 10px;
+  font-size: clamp(9px, 2.2vw, 11px);
   font-weight: 700;
   color: #000;
   margin: 0;
@@ -241,7 +250,7 @@
 }
 
 .timeline-sub {
-  font-size: 10px;
+  font-size: clamp(9px, 2.2vw, 11px);
   font-weight: 510;
   color: #70718b;
   margin: 2px 0 0 0;
@@ -255,7 +264,7 @@
 /* Payment Breakdown */
 .payment-breakdown {
   position: relative;
-  padding-bottom: 25px; /* make room for paid badge */
+  padding-bottom: 25px;
 }
 
 .pb-row {
@@ -264,13 +273,13 @@
 }
 
 .pb-label {
-  font-size: 14px;
+  font-size: clamp(12px, 3vw, 15px);
   font-weight: 400;
   color: #000;
 }
 
 .pb-val {
-  font-size: 14px;
+  font-size: clamp(12px, 3vw, 15px);
   font-weight: 400;
   color: #000;
 }
@@ -281,8 +290,21 @@
   right: 12px;
   background-color: #ceecd4;
   color: #457a52;
-  font-size: 13px;
+  font-size: clamp(11px, 2.8vw, 14px);
   font-weight: 510;
   padding: 2px 10px;
   border-radius: 7px;
+}
+
+/* Tablet+: info cards in 2-column grid */
+@media (min-width: 600px) {
+  .success-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .map-container {
+    max-height: 300px;
+  }
 }

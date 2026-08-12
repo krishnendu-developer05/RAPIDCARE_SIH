@@ -1,38 +1,13 @@
 .header {
   padding-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: var(--section-gap, 20px);
 }
 
+/* The status bar is a Figma artifact simulating iOS chrome.
+   Hide it on real mobile/tablet; optionally show on wide desktop. */
 .status-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
-  margin-bottom: 25px;
+  display: none;
 }
-
-.time {
-  font-weight: 800;
-  font-size: 15px;
-  color: #000;
-}
-
-.dynamic-island {
-  width: 123px;
-  height: 36px;
-  background-color: #000;
-  border-radius: 50px;
-}
-
-.status-icons {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.icon-signal { width: 16px; height: 10px; }
-.icon-wifi { width: 16px; height: 12px; }
-.icon-battery { width: 22px; height: 12px; }
 
 .greeting-container {
   display: flex;
@@ -42,14 +17,14 @@
 }
 
 .greeting {
-  font-size: 17px;
+  font-size: clamp(15px, 3.8vw, 20px);
   font-weight: 600;
   color: #000;
   margin-bottom: 3px;
 }
 
 .subtitle {
-  font-size: 12px;
+  font-size: clamp(11px, 2.8vw, 14px);
   color: var(--text-secondary);
   margin-bottom: 6px;
 }
@@ -59,7 +34,7 @@
   align-items: center;
   gap: 4px;
   color: var(--primary-purple);
-  font-size: 14px;
+  font-size: clamp(12px, 3vw, 16px);
   font-weight: 500;
 }
 
@@ -69,9 +44,25 @@
 }
 
 .brand h2 {
-  font-size: 24px;
+  font-size: clamp(20px, 5vw, 28px);
   font-weight: 600;
   color: #000;
   margin: 0;
   line-height: 1;
+}
+
+/* Status bar icons — hidden when status bar is hidden */
+.time,
+.dynamic-island,
+.status-icons,
+.icon-signal,
+.icon-wifi,
+.icon-battery {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .greeting-container {
+    padding: 0;
+  }
 }

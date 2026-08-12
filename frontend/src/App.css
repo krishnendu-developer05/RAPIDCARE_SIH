@@ -1,16 +1,16 @@
 .bg-pattern {
   position: absolute;
-  top: -100px;
-  left: -50px;
+  top: -10%;
+  left: -5%;
   right: 0;
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
-  height: 400px;
+  height: clamp(250px, 45vw, 420px);
 }
 
 .bg-pattern img {
-  width: 150%;
+  width: 130%;
   max-width: none;
   opacity: 0.8;
 }
@@ -18,4 +18,20 @@
 .content {
   position: relative;
   z-index: 1;
+}
+
+@media (min-width: 600px) {
+  .bg-pattern {
+    height: clamp(300px, 35vw, 450px);
+  }
+
+  .bg-pattern img {
+    width: 110%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bg-pattern img {
+    width: 100%;
+  }
 }
