@@ -1,23 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
 
 :root {
   --primary-purple: #311d87;
+  --primary-purple-hover: #26156e;
+  --primary-purple-light: #5239b9;
   --bg-color: #efe9fd;
-  --text-primary: #000000;
-  --text-secondary: #70718b;
-  --text-tertiary: #87889e;
+  --text-primary: #0f0c20;
+  --text-secondary: #5e5f76;
+  --text-tertiary: #7d7e98;
   --card-bg: #ffffff;
-  --border-color: #3c298e;
+  --border-color: #dcd3fa;
 
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --brand-font: 'Plus Jakarta Sans', 'Inter', sans-serif;
 
   /* Responsive spacing tokens */
-  --page-padding: clamp(14px, 4vw, 32px);
-  --section-gap: clamp(16px, 3vw, 28px);
-  --card-radius: clamp(10px, 2vw, 16px);
+  --page-padding: clamp(16px, 3vw, 40px);
+  --section-gap: clamp(20px, 2.5vw, 36px);
+  --card-radius: clamp(12px, 1.5vw, 20px);
 
-  /* Content max-width for desktop readability */
-  --content-max-width: 960px;
+  /* Content max-width for desktop view */
+  --content-max-width: 1360px;
 }
 
 * {
@@ -28,9 +31,11 @@
 
 body {
   font-family: var(--font-family);
-  background-color: var(--bg-color);
+  background-color: #f7f4fe;
+  color: var(--text-primary);
   margin: 0;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 #root {
@@ -41,38 +46,46 @@ body {
   background-color: var(--bg-color);
   position: relative;
   overflow-x: hidden;
+  box-shadow: 0 0 50px rgba(49, 29, 135, 0.05);
 }
 
-/* Hide scrollbar for a cleaner mobile look */
+/* Global Smooth Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hide scrollbar for a cleaner look */
 .app-container::-webkit-scrollbar {
   display: none;
 }
 .app-container {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-
-.app-container {
   padding: var(--page-padding);
-  padding-bottom: 100px; /* Space for bottom nav */
+  padding-bottom: 120px; /* Space for bottom nav */
   min-height: 100vh;
-  overflow-y: auto;
 }
 
-/* ========== Tablet (≥600px) ========== */
-@media (min-width: 600px) {
-  .app-container {
-    padding-bottom: 110px;
-  }
-}
-
-/* ========== Desktop (≥1024px) ========== */
+/* ========== Desktop & Wide Viewport Enhancements ========== */
 @media (min-width: 1024px) {
   body {
-    background-color: #f3eefe;
+    background-color: #f2ecfe;
   }
 
   #root {
-    box-shadow: 0 0 40px rgba(49, 29, 135, 0.08);
+    box-shadow: 0 0 60px rgba(49, 29, 135, 0.08);
+    border-left: 1px solid rgba(49, 29, 135, 0.06);
+    border-right: 1px solid rgba(49, 29, 135, 0.06);
   }
 }

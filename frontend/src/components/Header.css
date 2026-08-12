@@ -1,10 +1,8 @@
 .header {
   padding-top: 10px;
-  margin-bottom: var(--section-gap, 20px);
+  margin-bottom: var(--section-gap, 24px);
 }
 
-/* The status bar is a Figma artifact simulating iOS chrome.
-   Hide it on real mobile/tablet; optionally show on wide desktop. */
 .status-bar {
   display: none;
 }
@@ -12,57 +10,93 @@
 .greeting-container {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 0 5px;
+  align-items: center;
+  padding: 0 4px;
 }
 
 .greeting {
-  font-size: clamp(15px, 3.8vw, 20px);
-  font-weight: 600;
-  color: #000;
-  margin-bottom: 3px;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
-  font-size: clamp(11px, 2.8vw, 14px);
+  font-size: clamp(12px, 1.8vw, 15px);
   color: var(--text-secondary);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .location {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   color: var(--primary-purple);
-  font-size: clamp(12px, 3vw, 16px);
-  font-weight: 500;
+  font-size: clamp(13px, 1.8vw, 15px);
+  font-weight: 600;
+  background: rgba(49, 29, 135, 0.06);
+  padding: 5px 12px;
+  border-radius: 20px;
+  width: fit-content;
+  transition: background 0.2s ease;
+}
+
+.location:hover {
+  background: rgba(49, 29, 135, 0.12);
 }
 
 .location-icon {
-  width: 10px;
-  height: 12px;
+  width: 12px;
+  height: 14px;
 }
 
-.brand h2 {
-  font-size: clamp(20px, 5vw, 28px);
-  font-weight: 600;
-  color: #000;
+/* Clear & High-Contrast Brand Logo */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  padding: 8px 18px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(49, 29, 135, 0.08);
+  border: 1.5px solid rgba(49, 29, 135, 0.12);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.brand:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(49, 29, 135, 0.14);
+}
+
+.brand-logo-badge {
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(135deg, #311d87 0%, #4f33c7 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 3px 8px rgba(49, 29, 135, 0.3);
+}
+
+.brand-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.brand-title {
+  font-family: var(--brand-font, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(22px, 2.8vw, 30px);
+  font-weight: 800;
+  color: var(--primary-purple);
   margin: 0;
   line-height: 1;
+  letter-spacing: -0.03em;
 }
 
-/* Status bar icons — hidden when status bar is hidden */
-.time,
-.dynamic-island,
-.status-icons,
-.icon-signal,
-.icon-wifi,
-.icon-battery {
-  display: none;
-}
-
-@media (min-width: 600px) {
-  .greeting-container {
-    padding: 0;
-  }
+.brand-highlight {
+  color: #ff3b30;
+  margin-left: 1px;
 }

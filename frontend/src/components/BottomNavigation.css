@@ -4,7 +4,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: var(--content-max-width, 960px);
+  max-width: var(--content-max-width, 1360px);
   height: 80px;
   z-index: 10;
 }
@@ -16,7 +16,10 @@
   width: 100%;
   height: 70px;
   background-color: #ccbbf7;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   z-index: 1;
+  box-shadow: 0 -4px 20px rgba(49, 29, 135, 0.08);
 }
 
 .bottom-nav-curve {
@@ -42,15 +45,22 @@
 }
 
 .home-fab {
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
   background-color: var(--primary-purple);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 5px;
-  box-shadow: 0 4px 10px rgba(49, 29, 135, 0.4);
+  box-shadow: 0 6px 16px rgba(49, 29, 135, 0.4);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.home-fab:hover {
+  transform: scale(1.08);
+  background-color: var(--primary-purple-hover);
 }
 
 .home-icon {
@@ -59,10 +69,11 @@
 }
 
 .home-label {
-  font-size: 14px;
-  font-weight: 700;
-  color: #000;
-  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--primary-purple);
+  margin-top: 6px;
+  letter-spacing: -0.01em;
 }
 
 .nav-items {
@@ -75,15 +86,23 @@
   justify-content: space-around;
   align-items: center;
   z-index: 3;
-  padding: 0 clamp(8px, 3vw, 20px);
+  padding: 0 clamp(16px, 5vw, 60px);
 }
 
 .nav-item {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-item:hover {
+  background-color: rgba(49, 29, 135, 0.1);
+  transform: translateY(-2px);
 }
 
 .space-for-fab {
@@ -119,24 +138,4 @@
   left: 25%;
   width: 50%;
   height: 30%;
-}
-
-/* Small mobile: slightly smaller nav */
-@media (max-width: 360px) {
-  .bottom-nav-container {
-    height: 72px;
-  }
-
-  .bottom-nav-bg {
-    height: 62px;
-  }
-
-  .nav-items {
-    height: 62px;
-  }
-
-  .home-fab {
-    width: 44px;
-    height: 44px;
-  }
 }

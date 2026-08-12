@@ -3,7 +3,7 @@ import './Header.css';
 
 function Header() {
   return (
-    <header className="header">
+    <header className="header animate-fade-in">
       <div className="status-bar">
         <span className="time">11:11</span>
         <div className="dynamic-island"></div>
@@ -24,7 +24,7 @@ function Header() {
           </div>
         </div>
         <div className="brand">
-          <h2>RapidCare</h2>
+          <h2 className="brand-title">RapidCare</h2>
         </div>
       </div>
     </header>
