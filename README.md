@@ -1,4 +1,4 @@
-# 🚑 RapidCare 
+# 🚑 RapidCare - Setup & Onboarding Guide for Developers
 Welcome to the **RapidCare** repository! Follow this guide to set up your local development environment and run the application.
 
 ---
