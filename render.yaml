@@ -21,9 +21,10 @@ services:
       - key: SUPABASE_SERVICE_ROLE_KEY
         sync: false
 
-  # 2. Frontend Static Site (React / Vite Single Page App)
-  - type: static
+  # 2. Frontend Web Service / Static Site
+  - type: web
     name: rapidcare-frontend
+    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
