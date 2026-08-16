@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { LocationProvider } from './context/LocationContext';
+import LocationWarningModal from './components/LocationWarningModal';
 import Header from './components/Header';
 import Banner from './components/Banner';
 import BookingOptions from './components/BookingOptions';
@@ -35,12 +37,15 @@ function Home() {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/ambulance/:hospitalName" element={<AmbulanceSelection />} />
-      <Route path="/payment" element={<PaymentPage />} />
-      <Route path="/success" element={<SuccessPage />} />
-    </Routes>
+    <LocationProvider>
+      <LocationWarningModal />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/ambulance/:hospitalName" element={<AmbulanceSelection />} />
+        <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/success" element={<SuccessPage />} />
+      </Routes>
+    </LocationProvider>
   );
 }
 

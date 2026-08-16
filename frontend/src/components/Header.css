@@ -29,27 +29,97 @@
   margin-bottom: 8px;
 }
 
-.location {
-  display: flex;
+.location-badge {
+  display: inline-flex;
   align-items: center;
   gap: 6px;
   color: var(--primary-purple);
-  font-size: clamp(13px, 1.8vw, 15px);
+  font-size: clamp(12.5px, 1.8vw, 14.5px);
   font-weight: 600;
-  background: rgba(49, 29, 135, 0.06);
-  padding: 5px 12px;
+  background: rgba(49, 29, 135, 0.07);
+  border: 1px solid rgba(49, 29, 135, 0.12);
+  padding: 6px 14px;
   border-radius: 20px;
   width: fit-content;
-  transition: background 0.2s ease;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
 }
 
-.location:hover {
-  background: rgba(49, 29, 135, 0.12);
+.location-badge:hover {
+  background: rgba(49, 29, 135, 0.14);
+  transform: translateY(-1px);
+}
+
+.location-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #94a3b8;
+  display: inline-block;
+}
+
+.location-badge.source-gps .location-dot {
+  background: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+  animation: pulseDot 2s infinite;
+}
+
+.location-badge.source-ip .location-dot {
+  background: #f59e0b;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.25);
+}
+
+.location-badge.status-denied {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+.location-badge.status-denied .location-dot {
+  background: #ef4444;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.95); opacity: 0.9; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.9; }
 }
 
 .location-icon {
   width: 12px;
   height: 14px;
+}
+
+.location-text {
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge-approx {
+  font-size: 10px;
+  background: #fef3c7;
+  color: #b45309;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.badge-warning {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
 }
 
 /* Minimal, Typography-Focused Rapid Care Header */
