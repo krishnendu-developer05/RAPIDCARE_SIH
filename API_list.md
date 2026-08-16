@@ -1,45 +1,49 @@
-# 🛰️ RapidCare API List & Configuration Guide
+# 🛰️ RapidCare Full-Stack API & Backend Documentation
 
-This document lists all external APIs, authentication requirements, and rate limit policies used in RapidCare.
+This document lists all external APIs, authentication requirements, and the custom Node.js Express + Supabase PostgreSQL backend setup.
 
 ---
 
 ## 1. Geocoding: OpenStreetMap Nominatim (100% Free & Keyless)
 
-### Overview
 - **Provider**: OpenStreetMap Official API (`Nominatim`)
-- **Purpose**: Converts geographic coordinates (`latitude`, `longitude`) obtained from browser GPS or IP into street addresses, neighborhoods, and cities.
 - **Endpoint**: `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat={lat}&lon={lon}&zoom=18&addressdetails=1`
-- **Cost**: 100% Free & Open Source
-- **API Key Required**: **No**
-- **Credit Card Required**: **No**
-
-### ⚠️ Strict Usage Policy & Built-in Protections in RapidCare
-Nominatim enforces a strict usage policy:
-- **Maximum 1 request per second** per client.
-
-### 🛡️ How RapidCare Complies Automatically
-1. **Throttled Request Queue**: The `geolocationService.js` module wraps all Nominatim calls in a sequential promise queue that guarantees at least **1,000ms (1 second)** delay between requests.
-2. **In-Memory & Precision Caching**: Coordinates are rounded to 4 decimal places (~11 meters) and cached. Duplicate lookups for the same area make **0 network requests**.
-3. **Graceful Fallback**: If Nominatim fails or returns HTTP 429, RapidCare automatically falls back to passive IP location metadata without disrupting the user.
+- **Rate Limiting**: Strictly throttled in `geolocationService.js` to **max 1 request per second** with ~11m precision coordinate caching.
+- **Cost**: 100% Free & Keyless
 
 ---
 
-## 2. Geolocation Multi-Tier Strategy
+## 2. RapidCare Custom Backend API (Node.js / Express on Render)
 
-RapidCare uses a resilient multi-tier location detection strategy for emergency dispatch:
+### Base URL:
+- Local Development: `http://localhost:5000`
+- Render Production: `https://rapidcare-api.onrender.com`
 
-| Tier | Provider / API | Purpose | Auth / Rate Limit |
-| :--- | :--- | :--- | :--- |
-| **Tier 1 (GPS)** | `navigator.geolocation` (HTML5 Browser API) | Real-time high-accuracy GPS coordinates (`enableHighAccuracy: true`) | Built-in browser (Requires user permission) |
-| **Tier 2 (Geocoding)** | OpenStreetMap Nominatim API | Reverse geocodes GPS coordinates to human-readable address & neighborhood | 100% Free & Keyless (Throttled: max 1 req/sec) |
-| **Tier 3 (IP Fallback)** | `ipwho.is` & `ipapi.co` | Passive approximate city / region detection if user blocks GPS | Free / Keyless |
+### Endpoints:
 
----
-
-## 3. Supabase Backend Services
-
-| Service | Environment Variable | Description |
+| Method | Endpoint | Description |
 | :--- | :--- | :--- |
-| **Supabase URL** | `VITE_SUPABASE_URL` | RapidCare backend project URL |
-| **Supabase Anon Key** | `VITE_SUPABASE_ANON_KEY` | Public client access key for database & real-time subscriptions |
+| `GET` | `/health` | Render Liveness & Readiness health probe (`200 OK`) |
+| `GET` | `/api/hospitals/nearby?lat=...&lng=...&radius=50` | Returns nearby hospitals sorted by real-time distance (PostGIS / Haversine) |
+| `GET` | `/api/hospitals/:id` | Returns hospital details and available ambulances |
+| `GET` | `/api/ambulances?hospital_id=...&type=...` | Lists available ambulances and driver info |
+| `POST` | `/api/bookings` | Creates an emergency dispatch booking and assigns an ambulance |
+| `GET` | `/api/bookings/:id` | Returns live booking details and status tracking |
+| `PATCH` | `/api/bookings/:id/status` | Updates booking dispatch status (`assigned`, `en_route`, `arrived`, `completed`) |
+
+---
+
+## 3. Database: Supabase PostgreSQL + PostGIS
+
+- **SQL Schema & Migration**: [`supabase/migrations/20260816_initial_schema.sql`](file:///c:/Users/upal5/OneDrive/Documents/GitHub/RAPIDCARE_SIH/supabase/migrations/20260816_initial_schema.sql)
+- **Tables**: `hospitals`, `ambulances`, `bookings`
+- **Spatial Procedure**: `get_nearby_hospitals(user_lat, user_lng, max_dist_km)` using `ST_DistanceSphere`
+- **Realtime**: `supabase_realtime` publication enabled on `bookings` and `ambulances` for live WebSocket GPS updates.
+
+---
+
+## 4. Deployment on Render (`render.yaml`)
+
+Infrastructure-as-Code is configured in [`render.yaml`](file:///c:/Users/upal5/OneDrive/Documents/GitHub/RAPIDCARE_SIH/render.yaml):
+1. **Web Service (`rapidcare-api`)**: Node.js backend (`cd backend && npm install && npm start`).
+2. **Static Site (`rapidcare-frontend`)**: React Vite SPA (`cd frontend && npm install && npm run build`).
